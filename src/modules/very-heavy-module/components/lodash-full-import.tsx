@@ -1,6 +1,6 @@
-import _ from 'lodash'
+import multiply from 'lodash/multiply'
 
 export const LodashComponent = () => {
-  const cal = _.multiply(1, 2)
+  const cal = multiply(1, 2)
   return <div>{cal}</div>
 }

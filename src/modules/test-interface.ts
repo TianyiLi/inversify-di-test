@@ -1,7 +1,7 @@
 export interface IServiceA {
-  getString(): string
+  getString(): Promise<string>
 }
 
-export interface ISerivceB {
+export interface IServiceB {
   getString(): string
 }

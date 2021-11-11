@@ -1,0 +1,14 @@
+diff --git a/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js b/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+index bc89009..4841f13 100644
+--- a/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
++++ b/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+@@ -14,7 +14,8 @@ function getSWCOptions({ filename , isServer , development , isPageFile , pagesD
+             syntax: isTypeScript ? 'typescript' : 'ecmascript',
+             dynamicImport: true,
+             // Exclude regular TypeScript files from React transformation to prevent e.g. generic parameters and angle-bracket type assertion from being interpreted as JSX tags.
+-            [isTypeScript ? 'tsx' : 'jsx']: isTSFile ? false : true
++            [isTypeScript ? 'tsx' : 'jsx']: isTSFile ? false : true,
++            decorators: true,
+         },
+         transform: {
+             react: {
