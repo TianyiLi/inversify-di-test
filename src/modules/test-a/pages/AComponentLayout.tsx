@@ -1,6 +1,16 @@
-import ServiceA from "../services/serviceA";
-import { container } from "../../core/container";
-import { TYPES } from "../../constant";
+import { TestAServiceModule } from '../services'
+import { container } from '../../core/container'
+import { useEffect } from 'react'
+import type { FC } from 'react'
 
-container.bind(TYPES.serviceA).to(ServiceA);
-container.load
+container.load(TestAServiceModule)
+
+export default (function AComponentLayout(children: React.ReactNode) {
+  useEffect(() => {
+    return () => {
+      container.unload(TestAServiceModule)
+    }
+  }, [])
+
+  return children
+})
