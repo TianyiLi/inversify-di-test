@@ -1,4 +1,4 @@
-import { IServiceA } from '../../test-interface'
+import { IServiceA } from '../entities'
 import { injectable, inject } from 'inversify'
 import {
   AbstractRequestClient,

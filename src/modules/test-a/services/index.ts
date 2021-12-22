@@ -1,8 +1,7 @@
-import { IServiceA } from './../../test-interface'
+import { IServiceAKey } from '../entities'
 import { ContainerModule } from 'inversify'
 import ServiceA from './serviceA'
-import { TYPES } from '../../constant'
-export const TestAServiceModule = new ContainerModule((bind) => {
-  bind<IServiceA>(TYPES.serviceA).to(ServiceA)
-})
-
+import { inversifyBind } from '../../shared/inversify-bind'
+export const TestAServiceModule = new ContainerModule(
+  inversifyBind([IServiceAKey, ServiceA])
+)

@@ -19,6 +19,5 @@ export abstract class AbstractRequestClient {
     params?: params,
     payload?: payload
   ) => Promise<AxiosResponse<T>>
-  abstract createRequest(config: AxiosRequestConfig): AbstractRequestClient
 }
 export const DIAbstractRequestClientKey = 'RequestClient'

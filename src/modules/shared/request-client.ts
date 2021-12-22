@@ -8,10 +8,8 @@ import { injectable } from 'inversify'
 
 @injectable()
 export default class BaseRequestClient implements AbstractRequestClient {
-  constructor(private http: AxiosInstance) {}
-  createRequest(config: AxiosRequestConfig<any> | undefined) {
-    return new BaseRequestClient(Axios.create(config))
-  }
+  private http: AxiosInstance = Axios
+  constructor() {}
   get<T>(url: string, params?: any) {
     return this.http.get<T>(url, { params })
   }

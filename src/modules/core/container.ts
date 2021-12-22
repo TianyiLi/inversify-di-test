@@ -5,3 +5,4 @@ import BaseRequestClient from '../shared/request-client'
 export const container = new Container()
 
 container.bind(DIAbstractRequestClientKey).to(BaseRequestClient)
+console.log(container.getAll(DIAbstractRequestClientKey))
