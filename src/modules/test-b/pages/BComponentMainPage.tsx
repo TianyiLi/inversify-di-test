@@ -1,8 +1,9 @@
 import { useInjection } from 'inversify-react'
-import { IServiceB, IserviceBKey } from '../entities'
+import { IServiceB, IServiceBKey } from '../entities'
+import Link from 'next/link'
 
 export const BComponentMainPage = () => {
-  const serviceB = useInjection<IServiceB>(IserviceBKey)
+  const serviceB = useInjection<IServiceB>(IServiceBKey)
 
   return (
     <div>
@@ -29,6 +30,7 @@ export const BComponentMainPage = () => {
       >
         3
       </button>
+      <Link href="/service-a">to a</Link>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import { TestAServiceModule } from '../services'
-import { container } from '../../core/container'
+import { coreContainer } from '../../core/container'
 
 export default (function AComponentLayout(children: React.ReactNode) {
-  container.load(TestAServiceModule)
+  coreContainer.load(TestAServiceModule);
   console.log('run layout')
   return children
 })

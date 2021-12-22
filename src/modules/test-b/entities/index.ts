@@ -4,4 +4,4 @@ export interface IServiceB {
   getAjaxString(): Promise<string>
 }
 
-export const IserviceBKey = 'ServiceB'
+export const IServiceBKey = 'ServiceB'

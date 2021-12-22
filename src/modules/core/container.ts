@@ -1,8 +1,23 @@
-import { DIAbstractRequestClientKey } from './../shared/interface/request-client'
-import { Container } from 'inversify'
-import BaseRequestClient from '../shared/request-client'
+import { DIAbstractRequestClientKey } from "./../shared/interface/request-client";
+import { Container, ContainerModule } from "inversify";
+import BaseRequestClient from "../shared/request-client";
 
-export const container = new Container()
+export const coreContainer = new (class CoreContainer {
+  public container = new Container();
 
-container.bind(DIAbstractRequestClientKey).to(BaseRequestClient)
-console.log(container.getAll(DIAbstractRequestClientKey))
+  private cachedKeys = new Set<ContainerModule>();
+
+  constructor() {
+    this.container.bind(DIAbstractRequestClientKey).to(BaseRequestClient);
+  }
+
+  load(...containerModules: ContainerModule[]) {
+    const containerModule = containerModules.shift();
+    if (!containerModule) return
+    if (this.cachedKeys.has(containerModule)) return;
+    this.container.load(containerModule);
+    this.load(...containerModules);
+  }
+})();
+
+export const container = coreContainer.container;
